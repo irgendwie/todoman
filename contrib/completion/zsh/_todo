@@ -43,7 +43,7 @@ __todo_set_conf(){
 # {{{ general helper: set variable main.path from configuration file
 __todo_set_conf_path(){
 	if __todo_set_conf; then
-		tasks_lists_path="$(sed -n -e 's/^[^#]\s*path\s*=\s*\(.*\)$/\1/p' $todoman_configuration_file 2>/dev/null)"
+		tasks_lists_path="$(sed -n -e 's/^\s*path\s*=\s*\(.*\)$/\1/p' $todoman_configuration_file 2>/dev/null)"
 		# the eval echo is needed since the path may contain ~ which should be evalueated to $HOME
 		tasks_lists_dir="$(eval echo ${tasks_lists_path%/\**})"
 		if [[ -z "${tasks_lists_path}" || ! -d "${tasks_lists_dir}" ]]; then
